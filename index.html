@@ -3,36 +3,45 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>No. 9 — Homepage directions</title>
+<title>No. 9 — v2 directions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f4f1ea;--ink:#111;--muted:#5a5550;--rule:#111;
-  }
+  :root{--bg:#ebe6d9;--ink:#0e0d0b;--muted:#5b554c;--rule:#0e0d0b;--hl:#b32d1d}
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
-  .wrap{max-width:1200px;margin:0 auto;padding:48px 40px 80px}
-  .top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:48px}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-weight:300;min-height:100vh}
+  .wrap{max-width:1280px;margin:0 auto;padding:48px 44px 80px}
+  .top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:56px}
   .top .mark{font-family:'Instrument Serif',serif;font-size:20px;text-transform:none;letter-spacing:0}
+  .top .right .pill{display:inline-block;border:1px solid var(--rule);padding:5px 10px;border-radius:999px;margin-left:8px}
+  .top .right .pill.hl{background:var(--hl);color:var(--bg);border-color:var(--hl)}
   h1{font-family:'Instrument Serif',serif;font-size:clamp(54px,8vw,108px);line-height:.95;letter-spacing:-.015em;max-width:18ch;margin-bottom:24px}
   h1 em{font-style:italic;color:var(--muted)}
-  .lede{max-width:62ch;font-size:15px;line-height:1.65;color:var(--muted);margin-bottom:64px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .lede{max-width:64ch;font-size:15px;line-height:1.65;color:var(--muted);margin-bottom:64px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
   .card{
-    border:1px solid var(--rule);background:#fff;padding:26px 24px 22px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px;
+    border:1px solid var(--rule);background:#f4efe2;padding:30px 28px 26px;display:flex;flex-direction:column;justify-content:space-between;min-height:440px;
     text-decoration:none;color:var(--ink);transition:transform .25s ease, background .25s ease;
   }
-  .card:hover{transform:translateY(-4px);background:#fcfaf3}
+  .card:hover{transform:translateY(-4px);background:#faf5e8}
+  .card.dark{background:#0a0a0a;color:#f1ece1;border-color:#0a0a0a}
+  .card.dark .num,.card.dark .desc{color:#8c857a}
+  .card.dark:hover{background:#161614}
   .card .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--muted)}
-  .card .name{font-family:'Instrument Serif',serif;font-size:44px;letter-spacing:-.01em;line-height:1;margin-top:32px}
-  .card .desc{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.55;max-width:30ch}
-  .card .open{margin-top:32px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);padding-top:14px}
-  .card .open .arrow{font-family:'Instrument Serif',serif;font-size:22px}
+  .card .name{font-family:'Instrument Serif',serif;font-size:54px;letter-spacing:-.01em;line-height:.98;margin-top:34px}
+  .card .name em{font-style:italic}
+  .card .desc{margin-top:18px;font-size:13.5px;color:var(--muted);line-height:1.6;max-width:38ch}
+  .card .changes{margin-top:22px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .card .changes ul{list-style:none;margin-top:10px;font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;text-transform:none;letter-spacing:0;color:inherit;line-height:1.6}
+  .card .changes li::before{content:"— ";color:var(--hl)}
+  .card.dark .changes li::before{color:#c9c2b3}
+  .card .open{margin-top:auto;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+  .card.dark .open{border-top-color:#262420}
+  .card .arrow{font-family:'Instrument Serif',serif;font-size:24px}
 
-  .compare{margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-size:12px;line-height:1.6;color:var(--muted)}
-  .compare h3{font-family:'Instrument Serif',serif;color:var(--ink);font-size:18px;font-style:italic;margin-bottom:10px}
+  .compare{margin-top:80px;display:grid;grid-template-columns:1fr 1fr;gap:32px;font-size:13px;line-height:1.6;color:var(--muted)}
+  .compare h3{font-family:'Instrument Serif',serif;color:var(--ink);font-size:20px;font-style:italic;margin-bottom:10px}
 
   @media (max-width:860px){
     .grid,.compare{grid-template-columns:1fr}
@@ -43,60 +52,71 @@
 <div class="wrap">
 
   <div class="top">
-    <span class="mark">No. 9 · Homepage directions</span>
-    <span>Internal · For Mike</span>
+    <span class="mark">No. 9 · v2 directions</span>
+    <span class="right">
+      <span class="pill hl">v2</span>
+      <span class="pill">B · Manifesto</span>
+      <span class="pill">C · Masthead</span>
+    </span>
   </div>
 
-  <h1>Three takes on the homepage,<br><em>all whispering, none shouting.</em></h1>
-  <p class="lede">Each pulls from the KCD restraint pattern: hero says almost nothing, services live one screen down, no clients listed. Same nine services (mapped 01–09 because the name asks for it), three different temperatures. Click any one to view.</p>
+  <h1>Two updated takes,<br><em>both with more weight on the page.</em></h1>
+  <p class="lede">B and C, pushed. Each kept its lane (B = cinematic manifesto, C = editorial cover). What changed: stronger hero copy, better hierarchy, a third pulled section in each that gives the page room to breathe and a point of view to land. Same nine services, tighter language. Click into either.</p>
 
   <div class="grid">
-    <a class="card" href="option-a-wordmark.html">
-      <div>
-        <div class="num">Option A</div>
-        <div class="name">The Wordmark</div>
-        <div class="desc">The most KCD-faithful. Cream paper, single oversized "No.9", italic tagline, two-column service index below. Calm, confident, very little to read.</div>
-      </div>
-      <div class="open">
-        <span>Open A</span><span class="arrow">→</span>
-      </div>
-    </a>
 
-    <a class="card" href="option-b-manifesto.html">
+    <a class="card dark" href="option-b-manifesto-v2.html">
       <div>
-        <div class="num">Option B</div>
+        <div class="num">Option B · v2</div>
         <div class="name">The Manifesto</div>
-        <div class="desc">Dark mode, editorial weight. "We — build worlds. / make news. / move markets." rotates in the hero. Services as a big-type list with hover lift.</div>
+        <div class="desc">Dark, editorial weight. The rotator slowed down so each line lands. Added a middle "Approach" section so the page is a three-act read: pitch, posture, work.</div>
+        <div class="changes">
+          What changed
+          <ul>
+            <li>Slower, longer rotator with new lines</li>
+            <li>New middle "Approach" act with a single big statement</li>
+            <li>Page-paginated nav (i / ii / iii) — feels like a piece, not a site</li>
+            <li>Service rows now have hover bars and longer descriptors</li>
+            <li>Subtle film grain + radial spotlight</li>
+          </ul>
+        </div>
       </div>
       <div class="open">
-        <span>Open B</span><span class="arrow">→</span>
+        <span>Open B v2</span><span class="arrow">→</span>
       </div>
     </a>
 
-    <a class="card" href="option-c-masthead.html">
+    <a class="card" href="option-c-masthead-v2.html">
       <div>
-        <div class="num">Option C</div>
+        <div class="num">Option C · v2</div>
         <div class="name">The Masthead</div>
-        <div class="desc">Treats the homepage like a magazine cover. Vol., issue, masthead, then a Table of Contents grid where each service is a "department." Worldbuilding made literal.</div>
+        <div class="desc">Pushed harder into magazine cover. Added a red accent (single hit, used sparingly), a pull-quote feature band between cover and ToC, and an editor's note section that closes the issue.</div>
+        <div class="changes">
+          What changed
+          <ul>
+            <li>Bigger, more iconic No.9 with "est. '24" superscript</li>
+            <li>Single red accent (the magazine move)</li>
+            <li>New pull-quote band between cover and ToC</li>
+            <li>ToC rows now have lede copy and page numbers (real masthead)</li>
+            <li>Closing Editor's Note section in lieu of "About"</li>
+          </ul>
+        </div>
       </div>
       <div class="open">
-        <span>Open C</span><span class="arrow">→</span>
+        <span>Open C v2</span><span class="arrow">→</span>
       </div>
     </a>
+
   </div>
 
   <div class="compare">
     <div>
-      <h3>A — best when…</h3>
-      You want the safest, most KCD-like read. Lets the wordmark do all the work; clients will fill the white space with their own associations.
+      <h3>If B is the direction…</h3>
+      Use this when you want the homepage to assert a point of view in the dark. The rotator does the talking, the Approach act tells you who you're dealing with, and the work index closes the deal. Most "studio" of the two.
     </div>
     <div>
-      <h3>B — best when…</h3>
-      You want the homepage to assert a point of view. The rotating verbs do the talking the wordmark can't, without a paragraph of copy.
-    </div>
-    <div>
-      <h3>C — best when…</h3>
-      You want world-building baked into the design system itself. Strongest narrative, most ownable, slightly more produced.
+      <h3>If C is the direction…</h3>
+      Use this when you want world-building to be the design system itself. The cover is iconic, the pull-quote is the manifesto, the ToC is the offering. Most "publication" of the two — and the most defensibly ownable.
     </div>
   </div>
 

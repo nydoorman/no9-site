@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>No. 9 — Option C v2 · The Masthead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ebe6d9;     /* warmer newsprint */
+    --bg2:#f3eee2;
+    --ink:#0e0d0b;
+    --muted:#5b554c;
+    --rule:#0e0d0b;
+    --hl:#b32d1d;     /* magazine red accent */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-weight:300}
+  body{scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
+  /* paper texture */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  .section{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;padding:0}
+
+  /* MASTHEAD STRIP */
+  .strip{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:13px 32px;border-bottom:1px solid var(--rule);
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  }
+  .strip .left{justify-self:start;display:flex;align-items:center;gap:14px}
+  .strip .left .dot{width:6px;height:6px;border-radius:50%;background:var(--hl);display:inline-block}
+  .strip .center{justify-self:center;font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:15px}
+  .strip .right{justify-self:end;display:flex;align-items:center;gap:22px}
+  .strip a{color:var(--ink);text-decoration:none}
+
+  /* COVER */
+  .cover{flex:1;display:grid;grid-template-rows:auto 1fr auto;padding:30px 44px 26px;position:relative}
+  .cover-top{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--rule);gap:24px}
+  .cover-top .vol{font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  .cover-top .vol strong{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink);margin-top:4px}
+  .cover-top .center{text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--muted)}
+  .cover-top .center .feature{display:block;font-style:normal;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--hl);margin-bottom:4px;font-weight:500}
+  .cover-top .price{font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:right}
+
+  .cover-title{
+    display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px 0 16px;position:relative;
+  }
+  .cover-title .kicker{font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .cover-title .kicker .dot{color:var(--hl)}
+  .cover-title h1{
+    font-family:'Instrument Serif',serif;font-weight:400;
+    font-size:clamp(150px,26vw,440px);line-height:.78;letter-spacing:-.022em;position:relative;
+  }
+  .cover-title h1 .nine{display:inline-block}
+  .cover-title .sub{display:block;font-style:italic;color:var(--muted);font-size:clamp(18px,1.7vw,24px);letter-spacing:.005em;margin-top:36px;max-width:38ch;line-height:1.45;text-transform:none;font-family:'Instrument Serif',serif}
+  .cover-title .rule{width:64px;height:1px;background:var(--rule);margin:28px auto 0}
+  .cover-title .est{margin-top:18px;font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .cover-title .est .red{color:var(--hl)}
+
+  .cover-bottom{
+    display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-top:1px solid var(--rule);padding-top:16px;
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);gap:18px;align-items:start;
+  }
+  .cover-bottom .col strong{display:block;color:var(--ink);font-family:'Instrument Serif',serif;font-size:14px;font-weight:400;letter-spacing:.01em;margin-bottom:6px;text-transform:none;font-style:italic}
+  .cover-bottom .col .num{display:inline-block;color:var(--hl);font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;margin-right:8px;vertical-align:-2px;text-transform:none;letter-spacing:0}
+
+  /* FEATURE / PULL QUOTE */
+  .feature-band{
+    background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:64px 44px;display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start;
+  }
+  .feature-band .label{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--hl);font-weight:500}
+  .feature-band .label .small{display:block;margin-top:14px;color:var(--muted);font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;text-transform:none;letter-spacing:0;line-height:1.5;font-weight:400}
+  .feature-band blockquote{font-family:'Instrument Serif',serif;font-size:clamp(34px,4.5vw,68px);line-height:1.05;letter-spacing:-.012em;color:var(--ink);max-width:24ch}
+  .feature-band blockquote em{font-style:italic;color:var(--muted)}
+  .feature-band cite{display:block;margin-top:32px;font-style:normal;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+  /* CONTENTS */
+  .contents{padding:64px 44px 36px;border-top:1px solid var(--rule)}
+  .contents-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;border-bottom:1px solid var(--rule);padding-bottom:28px;gap:24px;margin-bottom:0}
+  .contents-head .label{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .contents-head .label strong{display:block;color:var(--ink);font-family:'Instrument Serif',serif;font-size:18px;font-weight:400;letter-spacing:0;font-style:italic;text-transform:none;margin-top:6px}
+  .contents-head h2{font-family:'Instrument Serif',serif;font-size:clamp(56px,9vw,128px);line-height:.9;letter-spacing:-.015em;text-align:right}
+  .contents-head h2 em{font-style:italic;color:var(--muted)}
+
+  /* DEPARTMENTS as a ToC list, magazine style */
+  .toc{display:flex;flex-direction:column}
+  .toc-row{
+    display:grid;grid-template-columns:80px 1fr 1.5fr 80px;align-items:baseline;gap:24px;
+    padding:24px 0;border-bottom:1px solid var(--rule);
+    transition:padding .35s ease, background .35s ease;
+  }
+  .toc-row:hover{padding-left:14px;background:rgba(14,13,11,.03)}
+  .toc-row .num{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:var(--hl)}
+  .toc-row .name{font-family:'Instrument Serif',serif;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.005em;line-height:1.02}
+  .toc-row .lede{color:var(--muted);font-size:13px;line-height:1.55;letter-spacing:.01em;max-width:44ch}
+  .toc-row .pg{text-align:right;font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--muted)}
+
+  /* EDITOR'S NOTE / COLOPHON */
+  .editors{
+    padding:64px 44px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start;background:var(--bg);
+  }
+  .editors .label{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--hl);font-weight:500}
+  .editors .label strong{display:block;margin-top:10px;color:var(--ink);font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none}
+  .editors p{font-family:'Instrument Serif',serif;font-size:clamp(22px,2.4vw,30px);line-height:1.35;letter-spacing:-.002em;color:var(--ink);max-width:34ch}
+  .editors p em{font-style:italic;color:var(--muted)}
+  .editors .sig{margin-top:32px;font-style:italic;font-size:15px;color:var(--muted);font-family:'Instrument Serif',serif}
+
+  /* COLOPHON */
+  .colophon{
+    display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end;
+    padding:28px 44px;border-top:1px solid var(--rule);background:var(--bg);
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  }
+  .colophon .big{
+    font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,52px);
+    letter-spacing:-.012em;text-transform:none;color:var(--ink);text-decoration:none;
+    display:block;margin-top:6px;
+  }
+  .colophon .center{text-align:center}
+  .colophon .right{text-align:right}
+
+  @media (max-width:900px){
+    .strip{grid-template-columns:1fr 1fr;font-size:9px}
+    .strip .center{display:none}
+    .cover{padding:24px 22px 20px}
+    .cover-top{grid-template-columns:1fr 1fr}
+    .cover-top .center{display:none}
+    .cover-bottom{grid-template-columns:1fr 1fr}
+    .feature-band{grid-template-columns:1fr;gap:24px;padding:40px 22px}
+    .contents{padding:40px 22px 24px}
+    .contents-head{grid-template-columns:1fr}
+    .contents-head h2{text-align:left}
+    .toc-row{grid-template-columns:48px 1fr 40px;gap:12px}
+    .toc-row .lede{display:none}
+    .editors{padding:40px 22px;grid-template-columns:1fr;gap:24px}
+    .colophon{grid-template-columns:1fr;gap:18px;padding:22px;text-align:left!important}
+    .colophon .center,.colophon .right{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="section" id="hero">
+  <div class="strip">
+    <div class="left"><span class="dot"></span>NO. 9 · A CULTURAL STUDIO</div>
+    <div class="center">— The Worldbuilders Issue —</div>
+    <div class="right">
+      <a href="#contents">Services</a>
+      <a href="#editors">Note</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="cover">
+    <div class="cover-top">
+      <div class="vol">Vol. I · A standing issue<strong>2026, in progress</strong></div>
+      <div class="center"><span class="feature">★ Inside this issue</span>The Worldbuilders, the work, the nine</div>
+      <div class="price">No. 9 / 2026 →</div>
+    </div>
+
+    <div class="cover-title">
+      <div class="kicker">A studio for cultural relevance <span class="dot">●</span> News · Noise · Traction</div>
+      <h1>
+        <span class="nine">No.9</span>
+        <span class="sub">We build the worlds brands live in — and the noise, news, and numbers that prove it worked.</span>
+      </h1>
+      <div class="rule"></div>
+      <div class="est"><span class="red">●</span> &nbsp; Established MMXXIV &nbsp; · &nbsp; New York</div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="col"><strong>The Brief</strong>Worldbuilding for brands that move first</div>
+      <div class="col"><strong>The Method</strong><span class="num">9</span>departments, one studio</div>
+      <div class="col"><strong>The Receipts</strong>Acquisition · Market share · Lift</div>
+      <div class="col"><strong>The Address</strong>New York · Always</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BAND / PULL QUOTE -->
+<section style="scroll-snap-align:start" id="feature">
+  <div class="feature-band">
+    <div class="label">
+      Lead Feature · pg. 04
+      <span class="small">From the studio's first principles. Print where you can find it, IRL where it counts.</span>
+    </div>
+    <div>
+      <blockquote>
+        We don't <em>pitch decks.</em> We build the rooms the conversation is having about you.
+      </blockquote>
+      <cite>— The No. 9 Studio Note</cite>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="section" id="contents">
+  <div class="contents">
+    <div class="contents-head">
+      <div class="label">Departments · Nine Lanes
+        <strong>An index of the work.</strong>
+      </div>
+      <h2>What's <em>inside.</em></h2>
+    </div>
+
+    <div class="toc">
+      <div class="toc-row"><span class="num">№ 01</span><span class="name">Cultural Relevance</span><span class="lede">News, noise, traction. We make brands matter in the conversation already happening.</span><span class="pg">pg. 09</span></div>
+      <div class="toc-row"><span class="num">№ 02</span><span class="name">Big Ideas</span><span class="lede">Concepts loud enough to cut the algorithm. Earned, not optimized.</span><span class="pg">pg. 14</span></div>
+      <div class="toc-row"><span class="num">№ 03</span><span class="name">Partnerships &amp; Experiential</span><span class="lede">Programming, IRL moments, collaborations worth showing up for and worth posting about.</span><span class="pg">pg. 22</span></div>
+      <div class="toc-row"><span class="num">№ 04</span><span class="name">Social Strategy</span><span class="lede">Always on, always on-brand. Built for the platforms that move first.</span><span class="pg">pg. 31</span></div>
+      <div class="toc-row"><span class="num">№ 05</span><span class="name">Content Strategy</span><span class="lede">Stories engineered to be screenshotted, sent, stitched, and remembered.</span><span class="pg">pg. 40</span></div>
+      <div class="toc-row"><span class="num">№ 06</span><span class="name">Integrated Marketing</span><span class="lede">PR with meat on the bone. Campaigns that land in culture and convert at the till.</span><span class="pg">pg. 48</span></div>
+      <div class="toc-row"><span class="num">№ 07</span><span class="name">TikTok Shop &amp; Retail</span><span class="lede">Commerce-led storytelling. Trend to transaction to shelf, with receipts.</span><span class="pg">pg. 57</span></div>
+      <div class="toc-row"><span class="num">№ 08</span><span class="name">Fractional CMO</span><span class="lede">Senior leadership without the headcount. Operator-in-residence, not consultant-on-Zoom.</span><span class="pg">pg. 66</span></div>
+      <div class="toc-row"><span class="num">№ 09</span><span class="name">ROI</span><span class="lede">New-customer acquisition, market share, retail lift. Numbers, not noise.</span><span class="pg">pg. 75</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITOR'S NOTE + COLOPHON -->
+<section class="section" id="editors">
+  <div class="editors">
+    <div class="label">
+      Editor's Note
+      <strong>— A standing issue.</strong>
+    </div>
+    <div>
+      <p>The most interesting brands aren't sold to. They're <em>moved into.</em> No. 9 builds the worlds where that happens — the partnerships, the programming, the content, the commerce. <em>And the numbers that follow.</em></p>
+      <div class="sig">— The Studio</div>
+    </div>
+  </div>
+
+  <div class="colophon" id="contact">
+    <div>
+      <div>For new business</div>
+      <a class="big" href="mailto:hello@no9.studio">hello@no9.studio</a>
+    </div>
+    <div class="center">
+      <div>Follow</div>
+      <div style="font-family:'Instrument Serif',serif;font-size:18px;text-transform:none;letter-spacing:0;color:var(--ink);margin-top:6px">@noninestudio</div>
+    </div>
+    <div class="right">
+      <div>© No. 9, Inc.</div>
+      <div style="opacity:.6;margin-top:6px">Printed in New York</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

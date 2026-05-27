@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>No. 9 — Option B v2 · The Manifesto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --panel:#101010;
+    --ink:#f1ece1;
+    --muted:#8c857a;
+    --rule:#262420;
+    --accent:#c9c2b3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-weight:300}
+  body{scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
+  .section{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;padding:30px 44px;position:relative}
+  /* film-grain overlay */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.06;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
+  }
+  /* slow rotating spotlight in hero */
+  .spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(800px 600px at 30% 40%, rgba(241,236,225,.04), transparent 70%);}
+  /* NAV */
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);position:relative;z-index:5}
+  .nav .mark{font-family:'Instrument Serif',serif;font-size:19px;letter-spacing:0;text-transform:none;color:var(--ink)}
+  .nav .links a{color:var(--ink);text-decoration:none;margin-left:28px;opacity:.7;transition:opacity .3s}
+  .nav .links a:hover{opacity:1}
+  .nav .pagination{font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;text-transform:none;letter-spacing:0;color:var(--muted)}
+  /* HERO */
+  .hero{flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:32px;position:relative}
+  .hero-kicker{display:flex;justify-content:space-between;align-items:end;color:var(--muted);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;margin-top:64px}
+  .hero-kicker .lead{display:flex;align-items:center;gap:14px}
+  .hero-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);display:inline-block}
+  .hero-kicker .right{text-align:right;font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;text-transform:none;letter-spacing:0;color:var(--muted)}
+
+  .hero-body{display:flex;align-items:center}
+  .rotator{
+    font-family:'Instrument Serif',serif;font-weight:400;
+    font-size:clamp(60px,10vw,180px);line-height:.92;letter-spacing:-.018em;
+    max-width:18ch;
+  }
+  .rotator .we{display:block;color:var(--muted);font-style:italic;font-size:.62em;line-height:1;margin-bottom:.18em}
+  .rotator .verb{display:block;color:var(--ink);min-height:1.2em}
+  .rotator .verb .fade{display:inline-block;opacity:0;transform:translateY(28px);transition:opacity 1.1s cubic-bezier(.2,.7,.1,1), transform 1.1s cubic-bezier(.2,.7,.1,1)}
+  .rotator .verb .fade.on{opacity:1;transform:none}
+
+  .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;color:var(--muted);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding-top:24px;border-top:1px solid var(--rule)}
+  .hero-foot .scroll{color:var(--ink);opacity:.8}
+  .hero-foot .ix{font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:14px}
+
+  /* APPROACH SECTION (new) */
+  .approach{padding-top:80px;display:grid;grid-template-columns:0.4fr 0.6fr;gap:80px;align-items:start}
+  .approach .side{position:sticky;top:80px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .approach .side .pill{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:6px 12px;color:var(--ink)}
+  .approach h2{
+    font-family:'Instrument Serif',serif;font-weight:400;
+    font-size:clamp(40px,5.4vw,80px);line-height:1.05;letter-spacing:-.012em;color:var(--ink);
+  }
+  .approach h2 em{font-style:italic;color:var(--muted)}
+  .approach .signature{margin-top:48px;font-family:'Instrument Serif',serif;font-style:italic;color:var(--muted);font-size:18px}
+
+  /* SERVICES */
+  .services{padding-top:80px;border-top:1px solid var(--rule)}
+  .services-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:72px}
+  .services-head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(54px,9vw,148px);line-height:.92;letter-spacing:-.015em}
+  .services-head h2 em{color:var(--muted);font-style:italic}
+  .services-head .meta{color:var(--muted);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-align:right}
+  .services-head .meta strong{display:block;color:var(--ink);font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;letter-spacing:.005em;font-style:italic;text-transform:none;margin-bottom:8px}
+
+  .svc-list{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+  .svc-row{
+    display:grid;grid-template-columns:96px 1fr 1.1fr 32px;align-items:center;gap:24px;
+    padding:30px 0;border-bottom:1px solid var(--rule);
+    transition:padding .35s ease, background .35s ease;cursor:pointer;position:relative;
+  }
+  .svc-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);transition:width .4s ease;opacity:.4}
+  .svc-row:hover{padding-left:24px}
+  .svc-row:hover::before{width:3px}
+  .svc-row .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--muted)}
+  .svc-row .name{font-family:'Instrument Serif',serif;font-size:clamp(30px,3.6vw,52px);letter-spacing:-.006em;line-height:1.02}
+  .svc-row .blurb{color:var(--muted);font-size:13px;letter-spacing:.02em;line-height:1.55;max-width:46ch}
+  .svc-row .arrow{font-family:'Instrument Serif',serif;font-size:26px;color:var(--muted);text-align:right;transition:transform .35s ease, color .35s ease}
+  .svc-row:hover .arrow{transform:translateX(10px);color:var(--ink)}
+
+  /* FOOT */
+  .foot{margin-top:96px;padding:36px 0 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;align-items:end;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .foot a{color:var(--ink);text-decoration:none}
+  .foot .big{font-family:'Instrument Serif',serif;font-size:clamp(28px,4.4vw,58px);letter-spacing:-.012em;text-transform:none;margin-top:10px;display:block;color:var(--ink)}
+  .foot .right{text-align:right}
+
+  @media (max-width:860px){
+    .section{padding:24px 22px}
+    .approach{grid-template-columns:1fr;gap:24px}
+    .approach .side{position:relative;top:0}
+    .services-head{grid-template-columns:1fr;gap:18px}
+    .services-head .meta{text-align:left}
+    .svc-row{grid-template-columns:48px 1fr 24px;gap:14px}
+    .svc-row .blurb{display:none}
+    .foot{grid-template-columns:1fr;gap:24px}
+    .foot .right{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="section" id="hero">
+  <div class="spot"></div>
+
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <span class="pagination">i — A cultural studio</span>
+    <div class="links">
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-kicker">
+    <span class="lead"><span class="dot"></span>New York · Est. MMXXIV</span>
+    <span class="right">— Issue No. 9 / 2026</span>
+  </div>
+
+  <div class="hero-body">
+    <div class="rotator">
+      <span class="we">We</span>
+      <span class="verb" id="verb"><span class="fade">build worlds.</span></span>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <span class="scroll">Scroll → 01 of 03</span>
+    <span class="ix">Read on for the approach &amp; the work →</span>
+  </div>
+</section>
+
+<!-- APPROACH (new) -->
+<section class="section" id="approach">
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <span class="pagination">ii — The approach</span>
+    <div class="links">
+      <a href="#hero">Top</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="approach">
+    <aside class="side">
+      <div class="pill">§ Approach</div>
+      <div style="margin-top:18px;color:var(--muted);font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:14px;line-height:1.55;max-width:30ch">
+        We don't pitch decks.<br>We build worlds.
+      </div>
+    </aside>
+    <div>
+      <h2>Brands matter when they earn the room.<br><em>We build the rooms.</em></h2>
+      <div class="signature">— A cultural studio for the brands that move first.</div>
+    </div>
+  </div>
+
+  <div class="hero-foot" style="margin-top:auto;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase">
+    <span>Scroll → 02 of 03</span>
+    <span style="font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:14px">Nine services, one studio →</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <span class="pagination">iii — The work</span>
+    <div class="links">
+      <a href="#hero">Top</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="services-head">
+      <h2>Nine ways<br><em>to break through.</em></h2>
+      <div class="meta">
+        <strong>An index of services.</strong>
+        Pick the lane. We run the play.
+      </div>
+    </div>
+
+    <div class="svc-list">
+      <div class="svc-row"><span class="num">No. 01</span><span class="name">Cultural Relevance</span><span class="blurb">News, noise, traction — we make brands matter in the conversation that's already happening.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 02</span><span class="name">Big Ideas</span><span class="blurb">Concepts loud enough to cut the algorithm. Earned, not optimized.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 03</span><span class="name">Partnerships &amp; Experiential</span><span class="blurb">Programming, IRL moments, collaborations worth showing up for and worth posting about.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 04</span><span class="name">Social Strategy</span><span class="blurb">Always-on, always on-brand. Built for the platforms that move first and the audiences that decide what's next.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 05</span><span class="name">Content Strategy</span><span class="blurb">Stories engineered to be screenshotted, sent, stitched, and remembered.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 06</span><span class="name">Integrated Marketing</span><span class="blurb">PR gets meat on the bone. Campaigns that land in culture and convert at the till.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 07</span><span class="name">TikTok Shop &amp; Retail</span><span class="blurb">Commerce-led storytelling. Trend to transaction to shelf, with the receipts.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 08</span><span class="name">Fractional CMO</span><span class="blurb">Senior leadership without the headcount. Operator-in-residence, not consultant-on-Zoom.</span><span class="arrow">→</span></div>
+      <div class="svc-row"><span class="num">No. 09</span><span class="name">ROI</span><span class="blurb">New-customer acquisition, market share, retail lift. Numbers, not noise.</span><span class="arrow">→</span></div>
+    </div>
+
+    <div class="foot" id="contact">
+      <div>
+        <div>For new business</div>
+        <a href="mailto:hello@no9.studio" class="big">hello@no9.studio</a>
+      </div>
+      <div>
+        <div>Studio</div>
+        <div style="margin-top:8px;font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink)">New York</div>
+      </div>
+      <div class="right">
+        <div>© No. 9, Inc.</div>
+        <div style="opacity:.6;margin-top:6px">All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const verbs = [
+    "build worlds.",
+    "make news.",
+    "move markets.",
+    "court the culture.",
+    "earn the room.",
+    "ship big ideas.",
+    "convert attention."
+  ];
+  let i = 0;
+  const slot = document.getElementById('verb');
+  function setVerb(t){
+    slot.innerHTML = '<span class="fade">'+t+'</span>';
+    requestAnimationFrame(()=> slot.firstElementChild.classList.add('on'));
+  }
+  setVerb(verbs[0]);
+  setInterval(()=>{
+    const cur = slot.firstElementChild;
+    if(!cur) return;
+    cur.classList.remove('on');
+    setTimeout(()=>{
+      i = (i+1) % verbs.length;
+      setVerb(verbs[i]);
+    }, 900);
+  }, 3600);
+</script>
+</body>
+</html>
