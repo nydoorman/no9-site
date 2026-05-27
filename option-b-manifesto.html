@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>No. 9 — Option B · The Manifesto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0c;
+    --ink:#f3efe7;
+    --muted:#8d867c;
+    --rule:#26241f;
+    --accent:#f3efe7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  body{scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
+  .section{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;padding:32px 40px;position:relative}
+  /* subtle grain overlay */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.05;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+  .nav .links a{color:var(--ink);text-decoration:none;margin-left:28px;opacity:.65;transition:opacity .25s}
+  .nav .links a:hover{opacity:1}
+  .mark{font-family:'Instrument Serif',serif;font-size:18px;letter-spacing:.01em;text-transform:none}
+  /* HERO */
+  .hero-stack{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-bottom:60px}
+  .preface{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:32px}
+  .preface .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink);vertical-align:middle;margin-right:10px}
+  .rotator{
+    font-family:'Instrument Serif',serif;
+    font-weight:400;
+    font-size:clamp(56px,9.5vw,168px);
+    line-height:.95;
+    letter-spacing:-.018em;
+    min-height:1.9em;
+    max-width:14ch;
+  }
+  .rotator .we{display:block;color:var(--muted);font-style:italic;font-size:.78em;line-height:1;margin-bottom:.12em}
+  .rotator .verb{display:block;color:var(--ink)}
+  .rotator .verb span.fade{
+    display:inline-block;opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;
+  }
+  .rotator .verb span.fade.on{opacity:1;transform:none}
+  .meta-row{display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .meta-row a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px}
+  /* SERVICES */
+  .services{padding-top:48px;border-top:1px solid var(--rule)}
+  .services-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:64px}
+  .services-head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(54px,9vw,148px);line-height:.92;letter-spacing:-.015em}
+  .services-head h2 em{color:var(--muted);font-style:italic}
+  .services-head p{max-width:36ch;color:var(--muted);font-size:14px;line-height:1.6}
+  .svc-list{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+  .svc-row{
+    display:grid;grid-template-columns:80px 1fr 1.2fr 40px;align-items:center;
+    padding:28px 0;border-bottom:1px solid var(--rule);
+    transition:padding-left .35s ease, background .35s ease;cursor:pointer;
+  }
+  .svc-row:hover{padding-left:18px;background:rgba(243,239,231,.025)}
+  .svc-row .num{font-family:'Instrument Serif',serif;font-size:20px;color:var(--muted)}
+  .svc-row .name{font-family:'Instrument Serif',serif;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.005em}
+  .svc-row .blurb{color:var(--muted);font-size:13px;letter-spacing:.04em;max-width:42ch}
+  .svc-row .arrow{font-family:'Instrument Serif',serif;font-size:24px;color:var(--muted);text-align:right;transition:transform .35s ease, color .35s ease}
+  .svc-row:hover .arrow{transform:translateX(8px);color:var(--ink)}
+  /* FOOT */
+  .foot{margin-top:80px;padding:32px 0 0;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+  .foot a{color:var(--ink);text-decoration:none}
+  .foot .big{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,52px);letter-spacing:-.01em;text-transform:none;margin-top:8px;display:block}
+  @media (max-width:760px){
+    .services-head{grid-template-columns:1fr}
+    .svc-row{grid-template-columns:48px 1fr 24px;gap:8px}
+    .svc-row .blurb{display:none}
+    .section{padding:24px 22px}
+    .foot{flex-direction:column;align-items:flex-start;gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="section" id="hero">
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-stack">
+    <div class="preface"><span class="dot"></span>A cultural studio · New York</div>
+    <div class="rotator">
+      <span class="we">We</span>
+      <span class="verb" id="verb"><span class="fade">build worlds.</span></span>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <span>Scroll for what we do</span>
+    <a href="#services">Services ↓</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <div class="links">
+      <a href="#hero">Top</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="services-head" style="margin-top:80px">
+    <h2>Nine ways<br><em>to break through.</em></h2>
+    <p>We don't pitch decks. We build worlds — programming, partnerships, content and commerce that earn cultural traction and move the numbers that matter.</p>
+  </div>
+
+  <div class="svc-list">
+    <div class="svc-row"><span class="num">No. 01</span><span class="name">Cultural Relevance</span><span class="blurb">News, noise, traction. We make brands matter in the conversation.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 02</span><span class="name">Big Ideas</span><span class="blurb">Concepts loud enough to cut through the algorithm.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 03</span><span class="name">Partnerships & Experiential</span><span class="blurb">Programming, IRL moments, collaborations worth showing up for.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 04</span><span class="name">Social Media Strategy</span><span class="blurb">Always-on, always on-brand. Built for the platforms that move first.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 05</span><span class="name">Content Strategy</span><span class="blurb">Stories engineered to be screenshotted, sent and stitched.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 06</span><span class="name">Integrated Marketing</span><span class="blurb">PR gets meat on the bone. Campaigns that land — and convert.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 07</span><span class="name">TikTok Shop & Retail</span><span class="blurb">Commerce-led storytelling. Trend to transaction to shelf.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 08</span><span class="name">Fractional CMO</span><span class="blurb">Senior leadership without the headcount. Operator, not consultant.</span><span class="arrow">→</span></div>
+    <div class="svc-row"><span class="num">No. 09</span><span class="name">ROI</span><span class="blurb">New-customer acquisition, market share, retail lift. Numbers, not noise.</span><span class="arrow">→</span></div>
+  </div>
+
+  <div class="foot" id="contact">
+    <div>
+      <div>For new business</div>
+      <a href="mailto:hello@no9.studio" class="big">hello@no9.studio</a>
+    </div>
+    <div style="text-align:right">
+      <div>© No. 9, Inc.</div>
+      <div style="opacity:.6;margin-top:6px">All rights reserved.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Rotating verbs in hero
+  const verbs = [
+    "build worlds.",
+    "make news.",
+    "move markets.",
+    "earn traction.",
+    "court the culture.",
+    "ship big ideas."
+  ];
+  let i = 0;
+  const slot = document.getElementById('verb');
+  function setVerb(text){
+    slot.innerHTML = '<span class="fade">'+text+'</span>';
+    requestAnimationFrame(()=> slot.firstElementChild.classList.add('on'));
+  }
+  setVerb(verbs[0]);
+  setInterval(()=>{
+    const cur = slot.firstElementChild;
+    cur.classList.remove('on');
+    setTimeout(()=>{
+      i = (i+1) % verbs.length;
+      setVerb(verbs[i]);
+    }, 600);
+  }, 2800);
+</script>
+</body>
+</html>

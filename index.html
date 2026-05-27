@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>No. 9 — Homepage directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1ea;--ink:#111;--muted:#5a5550;--rule:#111;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:1200px;margin:0 auto;padding:48px 40px 80px}
+  .top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:48px}
+  .top .mark{font-family:'Instrument Serif',serif;font-size:20px;text-transform:none;letter-spacing:0}
+  h1{font-family:'Instrument Serif',serif;font-size:clamp(54px,8vw,108px);line-height:.95;letter-spacing:-.015em;max-width:18ch;margin-bottom:24px}
+  h1 em{font-style:italic;color:var(--muted)}
+  .lede{max-width:62ch;font-size:15px;line-height:1.65;color:var(--muted);margin-bottom:64px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    border:1px solid var(--rule);background:#fff;padding:26px 24px 22px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px;
+    text-decoration:none;color:var(--ink);transition:transform .25s ease, background .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);background:#fcfaf3}
+  .card .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--muted)}
+  .card .name{font-family:'Instrument Serif',serif;font-size:44px;letter-spacing:-.01em;line-height:1;margin-top:32px}
+  .card .desc{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.55;max-width:30ch}
+  .card .open{margin-top:32px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);padding-top:14px}
+  .card .open .arrow{font-family:'Instrument Serif',serif;font-size:22px}
+
+  .compare{margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-size:12px;line-height:1.6;color:var(--muted)}
+  .compare h3{font-family:'Instrument Serif',serif;color:var(--ink);font-size:18px;font-style:italic;margin-bottom:10px}
+
+  @media (max-width:860px){
+    .grid,.compare{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <span class="mark">No. 9 · Homepage directions</span>
+    <span>Internal · For Mike</span>
+  </div>
+
+  <h1>Three takes on the homepage,<br><em>all whispering, none shouting.</em></h1>
+  <p class="lede">Each pulls from the KCD restraint pattern: hero says almost nothing, services live one screen down, no clients listed. Same nine services (mapped 01–09 because the name asks for it), three different temperatures. Click any one to view.</p>
+
+  <div class="grid">
+    <a class="card" href="option-a-wordmark.html">
+      <div>
+        <div class="num">Option A</div>
+        <div class="name">The Wordmark</div>
+        <div class="desc">The most KCD-faithful. Cream paper, single oversized "No.9", italic tagline, two-column service index below. Calm, confident, very little to read.</div>
+      </div>
+      <div class="open">
+        <span>Open A</span><span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a class="card" href="option-b-manifesto.html">
+      <div>
+        <div class="num">Option B</div>
+        <div class="name">The Manifesto</div>
+        <div class="desc">Dark mode, editorial weight. "We — build worlds. / make news. / move markets." rotates in the hero. Services as a big-type list with hover lift.</div>
+      </div>
+      <div class="open">
+        <span>Open B</span><span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a class="card" href="option-c-masthead.html">
+      <div>
+        <div class="num">Option C</div>
+        <div class="name">The Masthead</div>
+        <div class="desc">Treats the homepage like a magazine cover. Vol., issue, masthead, then a Table of Contents grid where each service is a "department." Worldbuilding made literal.</div>
+      </div>
+      <div class="open">
+        <span>Open C</span><span class="arrow">→</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="compare">
+    <div>
+      <h3>A — best when…</h3>
+      You want the safest, most KCD-like read. Lets the wordmark do all the work; clients will fill the white space with their own associations.
+    </div>
+    <div>
+      <h3>B — best when…</h3>
+      You want the homepage to assert a point of view. The rotating verbs do the talking the wordmark can't, without a paragraph of copy.
+    </div>
+    <div>
+      <h3>C — best when…</h3>
+      You want world-building baked into the design system itself. Strongest narrative, most ownable, slightly more produced.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

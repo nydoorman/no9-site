@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>No. 9 — Option A · The Wordmark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1ea;
+    --ink:#111111;
+    --muted:#5a5550;
+    --rule:#1a1a1a;
+    --accent:#1b1b1b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  body{scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
+  .section{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:32px 40px}
+  /* NAV */
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .nav .links a{color:var(--ink);text-decoration:none;margin-left:28px;opacity:.7;transition:opacity .25s}
+  .nav .links a:hover{opacity:1}
+  .mark{font-family:'Instrument Serif',serif;font-size:18px;letter-spacing:.01em}
+  /* HERO */
+  .hero-body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+  .wordmark{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(140px,28vw,420px);line-height:.85;letter-spacing:-.02em}
+  .wordmark .dot{font-style:italic;font-size:.5em;vertical-align:.5em;margin:0 .04em 0 .02em}
+  .wordmark .nine{display:inline-block;transform:translateY(.04em)}
+  .tagline{margin-top:36px;font-family:'Instrument Serif',serif;font-size:clamp(20px,2vw,28px);font-style:italic;color:var(--muted);max-width:36ch}
+  .footnote{display:flex;justify-content:space-between;align-items:flex-end;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .chevron{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'Instrument Serif',serif;font-size:24px;animation:bob 2.4s ease-in-out infinite;cursor:pointer;color:var(--ink)}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+  /* SERVICES SECTION */
+  .services{padding-top:48px}
+  .services h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(54px,8vw,128px);line-height:.95;letter-spacing:-.015em;margin-bottom:48px}
+  .services h2 em{font-style:italic;color:var(--muted)}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+  .svc{display:grid;grid-template-columns:80px 1fr auto;align-items:baseline;padding:22px 4px;border-bottom:1px solid var(--rule);gap:24px}
+  .svc:nth-child(odd){border-right:1px solid var(--rule);padding-right:32px}
+  .svc:nth-child(even){padding-left:32px}
+  .svc .num{font-family:'Instrument Serif',serif;font-size:22px;color:var(--muted)}
+  .svc .name{font-family:'Instrument Serif',serif;font-size:clamp(22px,2.4vw,32px);letter-spacing:-.005em}
+  .svc .desc{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:right;max-width:28ch}
+  /* CONTACT FOOTER */
+  .foot{padding:24px 40px 28px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .foot a{color:var(--ink);text-decoration:none}
+  .foot .big{font-family:'Instrument Serif',serif;font-size:48px;letter-spacing:-.01em;text-transform:none}
+  @media (max-width:760px){
+    .svc-grid{grid-template-columns:1fr}
+    .svc:nth-child(odd){border-right:none;padding-right:4px}
+    .svc:nth-child(even){padding-left:4px}
+    .svc{grid-template-columns:48px 1fr;gap:16px}
+    .svc .desc{display:none}
+    .section{padding:24px 22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="section" id="hero">
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-body">
+    <div class="wordmark">No<span class="dot">.</span><span class="nine">9</span></div>
+    <div class="tagline">A studio for cultural relevance.<br>We build the worlds brands live in.</div>
+    <a href="#services" class="chevron" aria-label="Scroll">↓</a>
+  </div>
+
+  <div class="footnote">
+    <span>New York · Est. 2024</span>
+    <span>Index of Services ↓</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="nav">
+    <span class="mark">No. 9</span>
+    <div class="links">
+      <a href="#hero">Top</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div>
+    <h2>What we do<br><em>— nine ways to break through.</em></h2>
+    <div class="svc-grid">
+      <div class="svc"><span class="num">01</span><span class="name">Cultural Relevance</span><span class="desc">News · Noise · Traction</span></div>
+      <div class="svc"><span class="num">02</span><span class="name">Big Ideas</span><span class="desc">Concepts that cut through</span></div>
+      <div class="svc"><span class="num">03</span><span class="name">Partnerships & Experiential</span><span class="desc">Programming, IRL moments</span></div>
+      <div class="svc"><span class="num">04</span><span class="name">Social Strategy</span><span class="desc">Always-on, always-on-brand</span></div>
+      <div class="svc"><span class="num">05</span><span class="name">Content Strategy</span><span class="desc">Made to be shared</span></div>
+      <div class="svc"><span class="num">06</span><span class="name">Integrated Marketing</span><span class="desc">PR with meat on the bone</span></div>
+      <div class="svc"><span class="num">07</span><span class="name">TikTok Shop & Retail</span><span class="desc">Commerce-led storytelling</span></div>
+      <div class="svc"><span class="num">08</span><span class="name">Fractional CMO</span><span class="desc">Senior leadership, on demand</span></div>
+      <div class="svc"><span class="num">09</span><span class="name">ROI</span><span class="desc">Acquisition · Share · Lift</span></div>
+    </div>
+  </div>
+
+  <div class="foot" id="contact">
+    <div>
+      <div>For new business</div>
+      <a href="mailto:hello@no9.studio" class="big">hello@no9.studio</a>
+    </div>
+    <div style="text-align:right">
+      <div>© No. 9, Inc.</div>
+      <div style="opacity:.6;margin-top:6px">All rights reserved.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelector('.chevron').addEventListener('click', e=>{
+    e.preventDefault();
+    document.getElementById('services').scrollIntoView({behavior:'smooth'});
+  });
+</script>
+</body>
+</html>
