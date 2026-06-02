@@ -28,7 +28,9 @@
 
   /* NAV */
   .nav{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);position:relative;z-index:5}
-  .nav .mark{font-family:'Instrument Serif',serif;font-size:19px;letter-spacing:0;text-transform:none;color:var(--ink)}
+  .nav .mark{font-family:'Instrument Serif',serif;font-size:19px;letter-spacing:0;text-transform:none;color:var(--ink);display:inline-flex;align-items:center;text-decoration:none;line-height:1}
+  .nav .mark .logo-img{height:28px;width:auto;display:block}
+  @media (max-width:860px){.nav .mark .logo-img{height:22px}}
   .nav .links a{color:var(--ink);text-decoration:none;margin-left:28px;opacity:.7;transition:opacity .3s}
   .nav .links a:hover{opacity:1}
   .nav .pagination{font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;text-transform:none;letter-spacing:0;color:var(--muted)}
@@ -138,7 +140,7 @@
   <div class="spot"></div>
 
   <div class="nav">
-    <span class="mark">No. 9</span>
+    <a href="#hero" class="mark"><img src="no9-logo.png" alt="No. 9" class="logo-img"></a>
     <span class="pagination">i — The studio</span>
     <div class="links">
       <a href="#approach">Approach</a>
@@ -167,7 +169,7 @@
 <!-- APPROACH -->
 <section class="section" id="approach">
   <div class="nav">
-    <span class="mark">No. 9</span>
+    <a href="#hero" class="mark"><img src="no9-logo.png" alt="No. 9" class="logo-img"></a>
     <span class="pagination">ii — The mission</span>
     <div class="links">
       <a href="#hero">Top</a>
@@ -200,7 +202,7 @@
 <!-- SERVICES -->
 <section class="section" id="services">
   <div class="nav">
-    <span class="mark">No. 9</span>
+    <a href="#hero" class="mark"><img src="no9-logo.png" alt="No. 9" class="logo-img"></a>
     <span class="pagination">iii — The work</span>
     <div class="links">
       <a href="#hero">Top</a>
