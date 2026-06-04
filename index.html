@@ -17,7 +17,7 @@
     --accent:#c9c2b3;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-weight:300}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-weight:300;overflow-x:hidden}
   body{scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
   .section{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;padding:30px 44px;position:relative}
   body::before{
@@ -54,14 +54,14 @@
   .hero-kicker .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ink);margin-bottom:.6em}
   .hero-kicker .studio{
     font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
-    font-size:clamp(36px,5.8vw,84px);line-height:1;letter-spacing:-.008em;color:var(--ink);
+    font-size:clamp(28px,5.8vw,84px);line-height:1;letter-spacing:-.008em;color:var(--ink);
   }
   .hero-kicker .studio .punct{color:var(--muted)}
 
   .hero-body{display:flex;align-items:center}
   .rotator{
     font-family:'Instrument Serif',serif;font-weight:400;
-    font-size:clamp(60px,10vw,180px);line-height:.92;letter-spacing:-.018em;
+    font-size:clamp(44px,10vw,180px);line-height:.92;letter-spacing:-.018em;
     max-width:18ch;
   }
   .rotator .we{display:block;color:var(--muted);font-style:italic;font-size:.62em;line-height:1;margin-bottom:.18em}
@@ -87,7 +87,7 @@
   }
   .approach .lede{
     font-family:'Instrument Serif',serif;font-weight:400;
-    font-size:clamp(44px,6.4vw,98px);line-height:1.02;letter-spacing:-.012em;color:var(--ink);
+    font-size:clamp(32px,6.4vw,98px);line-height:1.05;letter-spacing:-.012em;color:var(--ink);
   }
   .approach .lede em{font-style:italic;color:var(--muted);display:block;margin-top:.08em}
   .approach .accent{
