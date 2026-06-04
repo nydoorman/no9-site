@@ -1,6 +1,20 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap');
 
+
+  /* Break Code Block out of Squarespace's responsive grid */
+  .no9-canvas {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .no9-canvas, .no9-canvas * { box-sizing: border-box; }
+
   :root{
     --bg:#0a0a0a;
     --panel:#101010;
@@ -177,7 +191,7 @@
 
 </style>
 
-
+<div class="no9-canvas">
 <!-- STICKY TOP NAV -->
 <header class="top-nav">
   <a href="#hero" class="mark"><img src="https://nydoorman.github.io/no9-site/no9-logo.png" alt="No. 9" class="logo-img"></a>
@@ -272,5 +286,4 @@
     </div>
   </div>
 </section>
-
-
+</div>
