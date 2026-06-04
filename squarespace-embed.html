@@ -4,14 +4,18 @@
 
   /* Break Code Block out of Squarespace's responsive grid */
   .no9-canvas {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100vw;
-    left: 50%;
-    margin-left: -50vw;
+    height: 100vh;
     background: var(--bg);
     color: var(--ink);
-    min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 100;
   }
   .no9-canvas, .no9-canvas * { box-sizing: border-box; }
 
